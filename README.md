@@ -1,8 +1,8 @@
-# webapi_playground
+# Subsystem 1
 
 ```mermaid
 ---
-title: Example
+title: Subsystem 1 ERD
 ---
 erDiagram
     CITY {
@@ -24,3 +24,32 @@ erDiagram
     CITY ||--o| STATE : "Is capital of"
     CITY ||--o| COUNTRY : "Is capital of"
 ```
+
+## Notes
+
+### Table Info
+
+blah blah blah
+
+# Subsystem 2
+
+```mermaid
+---
+title: Subsystem 2 ERD
+---
+erDiagram
+    CUSTOMER }|..|{ DELIVERY-ADDRESS : has
+    CUSTOMER ||--o{ ORDER : places
+    CUSTOMER ||--o{ INVOICE : "liable for"
+    DELIVERY-ADDRESS ||--o{ ORDER : receives
+    INVOICE ||--|{ ORDER : covers
+    ORDER ||--|{ ORDER-ITEM : includes
+    PRODUCT-CATEGORY ||--|{ PRODUCT : contains
+    PRODUCT ||--o{ ORDER-ITEM : "ordered in"
+```
+
+## Notes
+
+### Table Info
+
+asdlqwd qwdlkhqwkdjh
