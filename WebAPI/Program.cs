@@ -7,6 +7,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddHealthChecks();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -26,5 +28,7 @@ app.MapGet("/", () => "Hello World!");
 
 
 app.UsePathBase("/api");
+
+app.MapHealthChecks("/healthz");
 
 app.Run();
