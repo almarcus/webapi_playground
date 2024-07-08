@@ -22,6 +22,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapGet("/env", () => "Hello World!");
+app.MapGet("/", () => "Hello World!");
 
 app.Run();
