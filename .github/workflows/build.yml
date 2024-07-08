@@ -1,4 +1,4 @@
-name: Generate Unit Test Docs
+name: Run Build
 on:
   push:
 
