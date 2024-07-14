@@ -37,6 +37,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.UseMiddleware<LoggingMiddleware>();
+
 app.MapControllers();
 
 app.MapGet("/", () => "Hello World!");
