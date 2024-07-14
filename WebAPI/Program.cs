@@ -1,4 +1,5 @@
 using Serilog;
+using WebAPI.Middleware;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -10,8 +11,19 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddHealthChecks();
 
+builder.Services.AddExceptionHandler<ExceptionHandler>();
+builder.Services.AddProblemDetails();
+
+builder.Logging.AddJsonConsole(options =>
+{
+	options.IncludeScopes = false;
+	options.TimestampFormat = "yyyy-MM-ddThh:mm:ss.ffff";
+	options.JsonWriterOptions = new System.Text.Json.JsonWriterOptions { Indented = builder.Environment.IsDevelopment() };
+});
+
 builder.Host.UseSerilog((context, configuration) =>
 	configuration.ReadFrom.Configuration(context.Configuration));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -34,4 +46,5 @@ app.UsePathBase("/api");
 
 app.MapHealthChecks("/healthz");
 
+app.UseExceptionHandler();
 app.Run();
