@@ -14,6 +14,8 @@ builder.Services.AddHealthChecks();
 builder.Services.AddExceptionHandler<ExceptionHandler>();
 builder.Services.AddProblemDetails();
 
+builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
+
 builder.Logging.AddJsonConsole(options =>
 {
 	options.IncludeScopes = false;
@@ -49,4 +51,7 @@ app.UsePathBase("/api");
 app.MapHealthChecks("/healthz");
 
 app.UseExceptionHandler();
+
+// app.UseLambdaServer();
+
 app.Run();
