@@ -44,6 +44,7 @@ app.UseMiddleware<LoggingMiddleware>();
 app.MapControllers();
 
 app.MapGet("/", () => "Hello World!");
+app.MapGet("/{name}", (string name) => $"Hello {name}!");
 
 app.UseSerilogRequestLogging();
 app.UsePathBase("/api");
